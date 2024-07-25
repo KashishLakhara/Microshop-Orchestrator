@@ -14,9 +14,9 @@ spec:
       labels:
         service: web
     spec:
-      {{ if .Values.psp.enabled }}
+      {{- if .Values.psp.enabled }}
       serviceAccountName: robot-shop
-      {{ end }}
+      {{- end }}
       containers:
       - name: web
         image: {{ .Values.image.repo }}/rs-web:{{ .Values.image.version }}
@@ -27,7 +27,7 @@ spec:
           value: {{ .Values.eum.key }}
         - name: INSTANA_EUM_REPORTING_URL
           value: {{ .Values.eum.url }}
-        {{- end}}
+        {{- end }}
         ports:
         - containerPort: 8080
         resources:
